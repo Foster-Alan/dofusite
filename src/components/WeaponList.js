@@ -40,8 +40,38 @@ const WeaponList = () => {
             />
             <div>
               <h2>{Armas.name?.pt || Armas.name?.en}</h2>
+              <p>ID: {Armas.id}</p>
               <p>Nível: {Armas.level}</p>
               <p>Desc: {Armas.description.pt} </p>
+              <p>Range {Armas.minRange} - {Armas.range} </p>
+
+              {Armas.effects
+              .filter(effect => effect.characteristic === -1) // Filtra apenas os efeitos com characteristic === -1
+              .map((effect, index) => (
+                <React.Fragment key={index}>
+                  {effect.elementId === -1 ? (
+                    <>
+                      <p>{effect.from} PA</p>
+                    </>
+                  ) : (
+                    <p>
+                      Dano {effect.from} a {effect.to}{" "}
+                      {effect.elementId === 0
+                        ? "Neutro"
+                        : effect.elementId === 1
+                        ? "Terra"
+                        : effect.elementId === 2
+                        ? "Fogo"
+                        : effect.elementId === 3
+                        ? "Água"
+                        : effect.elementId === 4
+                        ? "Ar"
+                        : ""}
+                    </p>
+                  )}
+                </React.Fragment>
+              ))}
+
             </div>
           </li>
         ))}
