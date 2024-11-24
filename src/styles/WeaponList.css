@@ -1,0 +1,41 @@
+/* Estilo da lista de equipamentos */
+.weapon-list-container {
+    padding: 20px;
+  }
+  
+  .weapon-list-container h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .weapon-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .weapon-list-item {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .weapon-list-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .weapon-list-item h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #555;
+  }
+  
+  .weapon-list-item p {
+    margin: 0;
+    color: #777;
+  }
+  
