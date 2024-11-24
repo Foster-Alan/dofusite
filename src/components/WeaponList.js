@@ -41,6 +41,7 @@ const WeaponList = () => {
             <div>
               <h2>{Armas.name?.pt || Armas.name?.en}</h2>
               <p>Nível: {Armas.level}</p>
+              <p>Desc: {Armas.description.pt} </p>
             </div>
           </li>
         ))}

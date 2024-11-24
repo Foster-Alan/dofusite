@@ -20,23 +20,6 @@ export const fetchMounts = async () => {
  * Função para buscar Weapons filtrados pelo categoryId.
  * @returns {Promise<Array>} Lista de Weapons.
  */
-export const fetchWeapons1 = async () => {
-    try {
-    //   const response = await axios.get(`${API_BASE_URL}/items?$limit=50&$skip=8000`);
-       // ate aqui eu lembro
-      const response = await axios.get(`${API_BASE_URL}/items?&typeId=2&$limit=50&$skip=50`); //dessa forma eu puxo na api filtrado só arcos(typeId=2)
-      // Filtra os itens cujo categoryId seja igual a 0 e superTypeId igual a 2.
-      const Weapons = response.data.data.filter(
-        (item) => item.type?.categoryId === 0 
-        // && item.type?.id === 2 // aqui eu tava passando em todos os itens e filtrando o id do que é do arco, foi bom n
-      );
-      return Weapons;
-    } catch (error) {
-      console.error('Erro ao buscar Equipamentos:', error);
-      throw error; // Propaga o erro para tratamento.
-    }
-  };
-
   export const fetchWeapons = async () => {
     let allWeapons = [];
     let skip = 0;
