@@ -1,15 +1,22 @@
 import React from 'react';
-// import MountList from './components/MountList';
-import WeaponList from './components/WeaponList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import WeaponList from './components/WeaponList'; // Componente de Armas
+import ArchList from './components/ArchList'; // Componente de Montarias
 
-function App() {
+const App = () => {
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      {/* <h1>test </h1> */}
-      {/* <MountList /> */}
-      <WeaponList />
-    </div>
+    <Router>
+      <Navbar />
+      <div className="content">
+        <Routes>
+          <Route path="/armas" element={<WeaponList />} />
+          <Route path="/archs" element={<ArchList />} />
+          <Route path="*" element={<h1>Página não encontrada</h1>} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

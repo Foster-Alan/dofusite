@@ -6,13 +6,32 @@ const API_BASE_URL = 'https://api.beta.dofusdb.fr';
  * Função para buscar montarias.
  * @returns {Promise<Array>} Lista de montarias.
  */
-export const fetchMounts = async () => {
+export const fetchArchs = async () => {
+  let allArchs = [];
+  let skip = 0;
+  const limit = 50; // Limite por requisição
+
   try {
-    const response = await axios.get(`${API_BASE_URL}/mounts`);
-    return response.data.data; // Retorna apenas a lista de montarias.
+    while (true) {
+      const response = await axios.get(
+        `${API_BASE_URL}/monsters?race=78&$limit=${limit}&$skip=${skip}`
+      );
+      const archsPage = response.data.data;
+
+      // Adiciona os resultados da página atual à lista total
+      allArchs = [...allArchs, ...archsPage];
+
+      // Se a página atual não retornou 50 itens, significa que chegamos ao final
+      if (archsPage.length < limit) break;
+
+      // Incrementa o skip para buscar a próxima página
+      skip += limit;
+    }
+
+    return allArchs;
   } catch (error) {
-    console.error('Erro ao buscar montarias:', error);
-    throw error; // Propaga o erro para tratamento.
+    console.error('Erro ao buscar archmonstros:', error);
+    throw error;
   }
 };
 
